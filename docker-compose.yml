@@ -1,0 +1,17 @@
+version: "3"
+services:
+  db:
+    image: mysql:8.0.33
+    container_name: "todo_db"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_USER=guest
+      - MYSQL_PASSWORD=guest
+      - MYSQL_DATABASE=todo
+      - MYSQL_CHARSET=utf8mb4
+      - MYSQL_COLLECTION=utf8mb4_unicode_ci
+    restart: always
+    ports:
+      - "3506:3306"
+    volumes:
+      - ./mysql_data:/var/lib/mysql
