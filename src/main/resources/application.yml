@@ -1,4 +1,10 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc
+    url: jdbc:mysql://localhost:3506/todo
+    username: root
+    password: root
+  flyway:
+    baseline-version: 0
+    enabled: true
+    baseline-on-migrate: true
