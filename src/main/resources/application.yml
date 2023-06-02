@@ -8,3 +8,9 @@ spring:
     baseline-version: 0
     enabled: true
     baseline-on-migrate: true
+
+logging:
+  level:
+    root: info
+    web: info
+    sql: info

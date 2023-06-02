@@ -9,7 +9,6 @@ import org.springframework.http.ResponseEntity
 import org.springframework.validation.BindException
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.RestControllerAdvice
-import java.net.http.HttpRequest
 
 @RestControllerAdvice
 class ExceptionHandler(
@@ -23,5 +22,10 @@ class ExceptionHandler(
     @ExceptionHandler(NotFoundException::class)
     fun handleNotFoundException(notFoundException: NotFoundException,request: HttpServletRequest): ResponseEntity<Any> {
         return ResponseEntity(Error(notFoundException.message,HttpStatus.NOT_FOUND,notFoundException.stackTrace),HttpStatus.NOT_FOUND)
+    }
+
+    @ExceptionHandler(RuntimeException::class)
+    fun handleException(exception: RuntimeException,request: HttpServletRequest): ResponseEntity<Any> {
+        return ResponseEntity(Error(exception.message?: "",HttpStatus.INTERNAL_SERVER_ERROR,exception.stackTrace),HttpStatus.INTERNAL_SERVER_ERROR)
     }
 }
