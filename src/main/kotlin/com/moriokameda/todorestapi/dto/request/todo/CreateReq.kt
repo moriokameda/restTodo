@@ -1,6 +1,5 @@
 package com.moriokameda.todorestapi.dto.request.todo
 
-import com.fasterxml.jackson.annotation.JsonFormat
 import com.fasterxml.jackson.annotation.JsonProperty
 import jakarta.validation.constraints.AssertTrue
 import jakarta.validation.constraints.NotBlank
@@ -12,7 +11,6 @@ data class CreateReq(
     @field:Size(min = 1, max = 30)
     @get:JsonProperty
     val title: String,
-    @JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss")
     @get:JsonProperty
     val deadline: LocalDateTime
 
